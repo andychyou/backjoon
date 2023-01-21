@@ -4,7 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {"program": "${fileWorkspaceFolder}\\${fileBasenameNoExtension}.exe"},
+        //{"program": "${fileWorkspaceFolder}\\${fileBasenameNoExtension}.exe"},
 
         {
             "type": "lldb",
@@ -14,7 +14,7 @@
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
-            "preLaunchTask": "C/C++: clang 활성 파일 빌드",
+            "preLaunchTask": "C/C++: clang++ 활성 파일 빌드",
             
           },
     ]
