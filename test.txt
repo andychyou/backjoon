@@ -1,7 +1,18 @@
-6 2
-3 3 3 3 3 3
-2 3 3 3 3 3
-2 2 2 3 2 3
-1 1 1 2 2 2
-1 1 1 3 3 1
-1 1 2 3 3 2
+15
+bakers
+brakes
+breaks
+binary
+brainy
+baggers
+beggars
+and
+in
+the
+blowed
+bowled
+barn
+bran
+a
+1
+brainy bakers and beggars bowled in the barn a
