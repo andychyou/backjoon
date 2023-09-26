@@ -1,18 +1,4 @@
-15
-bakers
-brakes
-breaks
-binary
-brainy
-baggers
-beggars
-and
-in
-the
-blowed
-bowled
-barn
-bran
-a
-1
-brainy bakers and beggars bowled in the barn a
+3
+0 3
+1 5
+45 50
