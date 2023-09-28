@@ -1,52 +1,48 @@
-from collections import deque
 import sys
 
-def PlaceQueen(i,j, N, board):
-    for x in range(0, N):
-        board[i][x] = 1
-        board[x][j] = 1
-        y1 = j + x - i
-        y2 = j - (x - i)
-        if(y1 >= 0 and y1 < N):
-            board[x][y1] = 1
-        if(y2 >= 0 and y2 < N):
-            board[x][y2] = 1
-
-
-def Count(N, board):
-    cnt = 0
-    for i in range(N):
-        for j in range(N):
-            if board[i][j] == 0:
-                cnt += 1
-    return cnt
-
+sys.stdin = open('test.txt', 'r')
 input = sys.stdin.readline
+import copy
 
-N = int(input())
+answer = 0
 
-
-cnt = 0
-queen_cnt = 0
-board = [[0]*N for _ in range(N)]
-
-for x in range(N):
+def Check(N, k, col):
+    flag = True
     for i in range(N):
-        for j in range(N):
-            if(board[i][j] == 0):
-                PlaceQueen(i,j,N,board)
-                queen_cnt += 1
-if(queen_cnt == N):
-    cnt += queen_cnt
+        if col[i] != 0:
+            if col[i] == col[k] or y == x - i + j or y == -(x-i) + j:
+                flag = False
+                break
+    return flag
+
+def Backtrack( col, N, k):
+    global answer
+    if k == N:
+        answer += 1
+        return
+    if Check(N,k,col):
+        for c in range(N):
+            temp_col = col[:]
+            temp_col[k] = c
+            Backtrack(temp_col, N, k+1)
 
 
 
 
-# for x in range(N):
-#     board = [[0]*N for _ in range(N)]
-#     for i in range(N):
-#         for j in range(N):
-#             PlaceQueen(i,j,N,board)
-#     cnt += Count(N, board)
-    
-print(cnt)
+
+
+def main():
+    global answer
+    N = int(input())
+    # k 1 - 8
+    col = [0]*N
+    Backtrack(col,N,0)
+    print(answer)
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()
