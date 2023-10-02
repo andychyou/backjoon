@@ -67,5 +67,11 @@
         "locale": "cpp",
         "mutex": "cpp",
         "ratio": "cpp"
-    }
+    },
+    "editor.quickSuggestions": {
+        "other": "off",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.suggestOnTriggerCharacters": false
 }

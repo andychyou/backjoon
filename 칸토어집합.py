@@ -1,7 +1,7 @@
 import sys 
 
 sys.stdin = open('test.txt','r')
-input = sys.stdin.readlines
+input = sys.stdin.readline
 
 
 def Do(sentence, s, e):
@@ -16,8 +16,15 @@ def Do(sentence, s, e):
 
 
 def main():
-    for N in sys.stdin:
-        sentence = list('-'*(3**int(N)))
+    # while N := input():
+    #     sentence = list('-'*(3**int(N)))
+    #     Do(sentence, 0, len(sentence)-1)
+    #     for s in sentence:
+    #         print(s,end='')
+    #     print()
+    lines = sys.stdin.readlines()
+    for line in lines:
+        sentence = list('-'*(3**int(line)))
         Do(sentence, 0, len(sentence)-1)
         for s in sentence:
             print(s,end='')
