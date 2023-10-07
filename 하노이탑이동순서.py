@@ -4,7 +4,6 @@ N = None
 
 line = []
 cnt = 0
-
 def Hanoi(curr,s,e,temp):
     global line,cnt
     if curr == 1:
