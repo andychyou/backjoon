@@ -26,7 +26,7 @@ def main():
                     else:
                         c = 'B'
                 
-                if i % 2 - y == 0:
+                if (i-y) % 2 == 0:
                     c = 'W'
                 else:
                     c = 'B'
@@ -40,7 +40,7 @@ def main():
                         c = 'B'
                     else:
                         c = 'W'
-                if i % 2 - y== 0:
+                if (i-y) % 2 == 0:
                     c = 'B'
                 else:
                     c = 'W'
