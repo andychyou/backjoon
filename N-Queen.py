@@ -1,48 +1,35 @@
 import sys
 
-sys.stdin = open('test.txt', 'r')
 input = sys.stdin.readline
-import copy
-
-answer = 0
-
-def Check(N, k, col):
-    flag = True
-    for i in range(N):
-        if col[i] != 0:
-            if col[i] == col[k] or y == x - i + j or y == -(x-i) + j:
-                flag = False
-                break
-    return flag
-
-def Backtrack( col, N, k):
-    global answer
-    if k == N:
-        answer += 1
-        return
-    if Check(N,k,col):
-        for c in range(N):
-            temp_col = col[:]
-            temp_col[k] = c
-            Backtrack(temp_col, N, k+1)
-
-
-
-
-
 
 def main():
-    global answer
     N = int(input())
-    # k 1 - 8
-    col = [0]*N
-    Backtrack(col,N,0)
-    print(answer)
+    col = [-1] * N
+    cnt = 0
 
+    def check(i, j, col):
+        promising = True
+        for c in range(len(col)):
+            if col[c] != -1:
+                if col[c] == j or (abs(col[c] - j) == abs(c - i)):
+                    promising = False
+                    break
+        return promising
 
+    def Backtrack(k, col):
+        nonlocal N, cnt
+        if k == N:
+            cnt += 1
+            return
+        for i in range(k,N):
+            for j in range(N):
+                if check(i, j, col):
+                    col[i] = j
+                    Backtrack(k + 1, col)
+                    col[i] = -1
 
-
-
+    Backtrack(0, col)
+    print(cnt)
 
 if __name__ == '__main__':
     main()

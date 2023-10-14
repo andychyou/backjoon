@@ -1,64 +1,56 @@
 import sys
 
 sys.stdin = open("test.txt", "r")
+input = sys.stdin.readline
 
-def build(current_building, adj_list, time, building_cost, target_building):
-    global global_time
-    global li
-    if current_building == target_building:
-        li.append(time)
-        max = 0 
-        for i in li:
-            max = i if max < i else max
-        global_time = max
+
+def build(building, prepare_dict, costs):
+    global total, history
+    if building not in prepare_dict:
+        if history[building] == 0:
+            history[building] = 1
+            total += costs[building]
         return
-    
-    for building in adj_list[current_building]:
-        build(building, adj_list, time+building_cost[building], building_cost, target_building)
-    
+
+    c_list = []
+    for before in prepare_dict[building]:
+        if history[before] == 0:
+            c_list.append(costs[before])
+            history[before] = 1
+    if c_list:
+        total += max(c_list)
+    for before in prepare_dict[building]:
+        build(before, prepare_dict, costs)
 
 
-test_case = int(sys.stdin.readline())
+
+test_case = int(input())
 
 for x in range(test_case):
-    total_buildings, order_buildings = map(int, sys.stdin.readline().split())
-    line = list(map(int, sys.stdin.readline().split()))
+    total_buildings, order_buildings = map(int, input().split())
+    costs = list(map(int, input().split()))
+    costs = [0] + costs 
 
+    prepare_dict = dict()
 
-    #init building_cost
-    building_cost = dict()
-    for i in range(0, total_buildings):
-        building_cost[i+1] = line[i]
-    
-    li = []
     for i in range(0 , order_buildings):
-        li.append(list(map(int, sys.stdin.readline().split())))
-
-
-    #init adj_list
-    adj_list = dict()
-    for i in range(0, order_buildings):
-        if li[i][1] not in adj_list:
-            adj_list[li[i][1]] = [li[i][0]]
+        a,b = map(int,input().split())
+        if b not in prepare_dict:
+            prepare_dict[b] = [a]
         else:
-            adj_list[li[i][1]].append(li[i][0])
+            prepare_dict[b].append(a)
+    
+    print(prepare_dict)
+    build_this = int(input())
+    total = costs[build_this]
+    history = [0] * (total_buildings+1)
+    build(build_this, prepare_dict, costs)
+    print(total)
 
-    target_building = int(sys.stdin.readline())
-
-    current_building = target_building
-    time = building_cost[target_building]
-    global_time = 999999
-    li = []
-
-    # print(building_cost)
-    # print(adj_list)
-    build(current_building, adj_list, time, building_cost, 1)
     
 
 
-    print(global_time)
 
-        
     
     
     
