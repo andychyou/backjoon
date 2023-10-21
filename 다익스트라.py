@@ -1,7 +1,7 @@
 import sys
 sys.setrecursionlimit(10**6)
 from collections import deque
-from itertools import combinations, permutations
+from itertools import combination, permutation
 import heapq
 
 sys.stdin = open('test.txt','r')
