@@ -15,7 +15,7 @@ def Hanoi(curr,s,e,temp):
     cnt+=1
     Hanoi(curr-1,temp,e,s)
 
-
+d
 
 def main():
     global N
